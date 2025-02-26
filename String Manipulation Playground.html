@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Methods Playground</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        input, select, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>String Methods Playground</h2>
+    <input type="text" id="userString" placeholder="Enter a string" />
+    <br>
+    <select id="methodSelect" onchange="handleMethodChange()">
+        <option value="toUpperCase">toUpperCase()</option>
+        <option value="toLowerCase">toLowerCase()</option>
+        <option value="charAt">charAt()</option>
+        <option value="slice">slice()</option>
+        <option value="substring">substring()</option>
+        <option value="replace">replace()</option>
+        <option value="split">split()</option>
+        <option value="trim">trim()</option>
+        <option value="padStart">padStart()</option>
+        <option value="padEnd">padEnd()</option>
+        <option value="repeat">repeat()</option>
+    </select>
+    <br>
+    <div id="extraInputs"></div>
+    <button onclick="applyMethod()">Apply Method</button>
+    <h3>Result:</h3>
+    <p id="result"></p>
+    
+    <script>
+        function handleMethodChange() {
+            let method = document.getElementById("methodSelect").value;
+            let extraInputs = document.getElementById("extraInputs");
+            extraInputs.innerHTML = "";
+            
+            if (method === "charAt" || method === "slice" || method === "substring" || method === "padStart" || method === "padEnd" || method === "repeat") {
+                extraInputs.innerHTML += '<input type="number" id="param1" placeholder="Enter first value">';
+            }
+            
+            if (method === "slice" || method === "substring" || method === "padStart" || method === "padEnd") {
+                extraInputs.innerHTML += '<input type="number" id="param2" placeholder="Enter second value">';
+            }
+            
+            if (method === "replace") {
+                extraInputs.innerHTML += '<input type="text" id="param1" placeholder="Text to replace">';
+                extraInputs.innerHTML += '<input type="text" id="param2" placeholder="Replace with">';
+            }
+            
+            if (method === "split") {
+                extraInputs.innerHTML += '<input type="text" id="param1" placeholder="Delimiter">';
+            }
+        }
+        
+        function applyMethod() {
+            let str = document.getElementById("userString").value;
+            let method = document.getElementById("methodSelect").value;
+            let param1 = document.getElementById("param1")?.value;
+            let param2 = document.getElementById("param2")?.value;
+            let result = "";
+            
+            switch (method) {
+                case "toUpperCase":
+                    result = str.toUpperCase();
+                    break;
+                case "toLowerCase":
+                    result = str.toLowerCase();
+                    break;
+                case "charAt":
+                    result = str.charAt(parseInt(param1));
+                    break;
+                case "slice":
+                    result = str.slice(parseInt(param1), parseInt(param2));
+                    break;
+                case "substring":
+                    result = str.substring(parseInt(param1), parseInt(param2));
+                    break;
+                case "replace":
+                    result = str.replace(param1, param2);
+                    break;
+                case "split":
+                    result = str.split(param1);
+                    break;
+                case "trim":
+                    result = str.trim();
+                    break;
+                case "padStart":
+                    result = str.padStart(parseInt(param1), param2 || " ");
+                    break;
+                case "padEnd":
+                    result = str.padEnd(parseInt(param1), param2 || " ");
+                    break;
+                case "repeat":
+                    result = str.repeat(parseInt(param1));
+                    break;
+                default:
+                    result = "Invalid method";
+            }
+            
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</body>
+</html>
