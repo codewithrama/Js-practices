@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Portal</title> <!--for object constructor practices-->
+
+    <style>
+        body {
+            background-color: beige;
+        }
+
+        h3 {
+
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 40px;
+            text-align: center;
+
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 25px;
+            color: peru;
+        }
+
+        input {
+            padding: 10px;
+            margin: 10px;
+            border: 1px solid black;
+        }
+
+        button {
+            padding: 20px;
+            border: 1px solid red;
+            background-color: red;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <h3>Please fill the below form to Add Student to Registration</h3>
+
+    <form>
+        <div class="sname">
+            <Label for="student_name"> Student name</Label>
+            <input id="student_name" type="text">
+        </div>
+
+        <div class="sage">
+            <Label for="student_age"> Student Age</Label>
+            <input id="student_age" type="number">
+
+        </div>
+
+        <div class="smob">
+            <Label for="student_Mobile"> Student Mobile Number</Label>
+            <input id="student_Mobile" type="tel">
+        </div>
+
+        <div class="semail">
+            <Label for="student_email"> Student Email</Label>
+            <input id="student_email" type="email">
+        </div>
+
+
+
+    </form>
+
+    <button type="button" onclick="addstudentdetails()">Add To DB </button>
+
+    <p id="message"></p>
+
+
+
+    <script>
+
+        function Studentobject(name,age, mobile, email) {
+            this.studentname=name;
+            this.student_age = age;
+            this.student_mobile = mobile;
+            this.student_email = email;
+
+        } // constructor
+
+
+
+        function addstudentdetails() {
+
+            var studentname = document.getElementById('student_name').value;
+            console.log(studentname);
+
+            var student_age = document.getElementById('student_age').value;
+
+            var student_mobile = document.getElementById('student_Mobile').value;
+
+            var student_email = document.getElementById('student_email').value;
+
+
+
+            student = new Studentobject(studentname,student_age, student_mobile, student_email);
+            
+            console.log(student);
+             
+
+
+            document.getElementById('message').innerHTML =
+                'Student Added Succesfully !';
+
+            document.getElementById('message').style.color = "green";
+
+            setTimeout(function () {
+                document.getElementById('message').innerHTML = ""; // Clear the message
+            }, 3000); // 3000ms = 3 seconds
+
+
+
+        }
+
+
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

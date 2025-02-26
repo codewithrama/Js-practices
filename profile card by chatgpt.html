@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>User Profile Card</title>
+        <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+    </style>
+
+    </head>
+
+    <body>
+        <div class="card">
+            <h2 id="userName">Loading...</h2>
+            <p id="userEmail"></p>
+            <p id="userAge"></p>
+            <button onclick="user.updateAge()">Update Age</button>
+            <button onclick="user.updatename()">Update Name to Dashika</button>
+
+        </div>
+
+        <script>
+            // User object
+const user = {
+    name: "John Doe",
+    email: "john@example.com",
+    age: 25,
+    
+    // Method to update age
+    updateAge: function() {
+        this.age += 1;
+        displayUser(); // Update UI
+    },
+
+    updatename : function(){
+        this.name='Dashika';
+        displayUser();
+    }
+};
+
+// Function to display user data in HTML
+function displayUser() {
+    document.getElementById("userName").innerText = user.name;
+    document.getElementById("userEmail").innerText = "📧 " + user.email;
+    document.getElementById("userAge").innerText = "🎂 Age: " + user.age;
+}
+
+// Function to update age
+function updateAge() {
+    user.updateAge();
+}
+
+// Show user info when page loads
+displayUser();
+
+        </script>
+    </body>
+
+</html>

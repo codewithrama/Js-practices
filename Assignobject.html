@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Tutorial</title>
+
+    <style>
+        h3,
+        p {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        h3 {
+            color: blue;
+        }
+
+        #assignrole {
+            width: 90px;
+            height: 30px;
+            border: none;
+            color: white;
+            background-color: red;
+            cursor: pointer;
+        }
+
+        option {
+            width: 150px;
+            height: 150px;
+            padding: 30%;
+        }
+
+        #label {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        select {
+            border-radius: 3%;
+            width: 100px;
+            height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Welcome to student database</h3>
+    <p>This Portal is for assigning roles to students!</p>
+
+    <form>
+        <label id="label">Available student names</label>
+        <select id="Students">
+            <option value="Rama">Rama</option>
+            <option value="Sri">Sri</option>
+            <option value="Venks">Venks</option>
+            <option value="Vicks">Vicks</option>
+            <option value="Sudharsan">Sudharsan</option>
+        </select>
+
+        <label id="label">Available Roles</label>
+        <select id="roles">
+            <option value="Leader">Leader</option>
+            <option value="Council Head">Council Head</option>
+            <option value="Representative">Representative</option>
+        </select>
+
+        <button id="assignrole" type="button" onclick="assignclick()">Assign
+            Role</button>
+    </form>
+
+    <p id="successmessage" style="color: green;"></p>
+
+    <p id="loading" style="color:blue"></p>
+
+    <script>
+        const students = {
+            student: {
+                Rama: { name: 'Rama', age: 20, Role: 'Student' },
+                Sri: { name: 'Sri', age: 20, Role: 'Student' },
+                Venks: { name: 'Venks', age: 20, Role: 'Student' },
+                Vicks: { name: 'Vicks', age: 20, Role: 'Student' },
+                Sudharsan: { name: 'Sudharsan', age: 20, Role: 'Student' }
+            }
+        };
+
+        function assignclick() {
+
+
+            let selected_student = document.querySelector("#Students").value;
+            let selected_role = document.querySelector("#roles").value;
+
+            // Check if the student exists in the object
+
+            if (students.student[selected_student]) {
+
+                if ((students.student[selected_student].Role !== selected_role)) {
+                    students.student[selected_student].Role = selected_role;
+
+                    document.getElementById('successmessage').innerHTML =
+                        selected_student + ' assigned successfully to ' + selected_role;
+
+                        document.getElementById('successmessage').style.color = "green";
+
+
+                    console.log(students.student[selected_student]);
+
+                    setTimeout(function () {
+                        document.getElementById('successmessage').innerHTML = ""; // Clear the message
+                    }, 3000); // 3000ms = 3 seconds
+                }
+                else {
+
+                    document.getElementById('successmessage').innerHTML =
+                        'Uh oh ! ' + selected_student + ' is already assigned  to ' + selected_role;
+
+                    document.getElementById('successmessage').style.color = "red";
+
+                    setTimeout(function () {
+                        document.getElementById('successmessage').innerHTML = ""; // Clear the message
+                    }, 3000); // 3000ms = 3 seconds
+                }
+
+            }
+
+            else {
+                document.getElementById('successmessage').innerHTML =
+                    'Error: Student not found!';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+
+<!--old code
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Tutorial</title>
+
+    <style>
+        h3,
+        p {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 40px;
+            text-align: center;
+        }
+
+        h3 {
+            color: blue;
+        }
+
+
+        #assignrole {
+            /* padding: 10px; */
+            width: 90px;
+            height: 30px;
+            border: none;
+            color: white;
+            background-color: red;
+            cursor: pointer;
+        }
+
+
+        option {
+            width: 150px;
+            height: 150px;
+            padding: 30%;
+        }
+
+        #label {
+
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 30px;
+            text-align: center;
+
+        }
+
+        select {
+            border-radius: 3%;
+            width: 100px;
+            height: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Welcome to student data base</h3>
+    <p> This Portal for assigning roles to students !</p>
+
+    <form>
+
+        <label id="label"> Available student names </label>
+        <select id="Students">
+            <option value="Rama">Rama</option>
+            <option value="Sri">Sri</option>
+            <option value="Venks">Venks</option>
+            <option value="Vicks">Vicks</option>
+            <option value="Sudharsan">Sudharsan</option>
+        </select>
+
+        <label id="label"> Available Roles </label>
+        <select id="roles">
+            <option value="Leader">Leader</option>
+            <option value="Council Head">Council Head</option>
+            <option value="Represantative">Represantative</option>
+        </select>
+
+        <button id="assignrole" onclick="assignclick()"> Assign Role</button>
+
+    </form>
+
+    <p id="successmessage" style="color: green;"></p>
+
+</body>
+
+<script>
+
+    const students = {
+        student: {
+            Rama: { name: 'Rama', age: 20, Role: 'Student' },
+            Sri: { name: 'Sri', age: 20, Role: 'Student' },
+            Venks: { name: 'Venks', age: 20, Role: 'Student' },
+            Vicks: { name: 'Vicks', age: 20, Role: 'Student' },
+            Sudharsan: { name: 'Sudharsan', age: 20, Role: 'Student' }
+
+
+        }
+    }
+
+
+    function assignclick() {
+
+
+        let selected_student = document.querySelector("#students").value;
+
+        let selected_role = document.querySelector('#roles').value;
+
+
+        if ((selected_student === (students.student.Rama.name))
+            || (selected_student === (students.student.Sri.name)) ||
+            (selected_student === (students.student.Venks.name)) || (selected_student === (students.student.Vicks.name)) || (selected_student === (students.student.Sudharsan.name))) {
+
+            students.student.selected_student['Role'] = selected_role;
+
+
+            document.getElementById('successmessage').innerHTML = selected_student + 'assigned succesfully to' + selected_role;
+
+            
+        }
+
+        
+
+    }
+
+
+</script>
+
+</html> -->

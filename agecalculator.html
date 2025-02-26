@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator </title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: bisque;
+
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        /* input[type="date"] {
+                padding: 5px;
+                width: 200px;
+                margin-right: 10px;
+            } */
+        input[type="submit"] {
+            padding: 5px 10px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Do you know ? how important calculate age is </h3>
+    <h4>let's celebrate your age with ❤️</h4>
+
+    <form>
+        <label for="dob">Enter your Date of Birth</label>
+        <input type="text" name="dob" id="dob" required placeholder="only year ">
+        <input type="button" value="Calculate Age" onclick="age()" >
+    </form>
+
+    <div class="calculated_age">
+        <p id="display"></p>
+    </div>
+</body>
+
+<script>
+
+
+
+
+    function age() {
+        console.log("function called !")
+
+        if (document.getElementById("dob").value < 2025)
+        {
+        var calculated_age = 2025 - document.getElementById("dob").value;
+
+        console.log(calculated_age)
+
+        document.getElementById("display").innerHTML = "You are " + calculated_age + " years old!";
+
+        }
+
+        else{
+            alert("oops! its only 2025 dude, Please enter a valid year"  )
+        }
+
+    }
+
+
+
+
+
+</script>
+
+</html>
