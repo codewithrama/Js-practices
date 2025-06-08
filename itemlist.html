@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My Movie List</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        input,
+        button {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Add your Items  </h2>
+    <input type="text" id="things" placeholder="Enter Shopping name">
+    <button id="addBtn" onclick="itemAdd()">Add item</button>
+    <button id="removeBtn" onclick="itemRemove()">Remove Last item</button>
+    <ul id="itemlist"></ul>
+
+    <script>
+        // You'll write JavaScript here
+
+let shoppingcard = [];
+
+       const itemAdd= function(){
+        const thing = document.getElementById("things").value;
+        if(thing){
+            shoppingcard.push(thing);
+            document.getElementById("things").value = ""; // Clear input field
+            displayitems();
+        } else {
+            alert("Please enter items.");
+        }
+
+       }
+
+         const itemRemove = function() {
+          if(shoppingcard.length > 0) {
+            shoppingcard.pop();
+                displayitems();
+          } else {
+                alert("No items to remove.");
+          }
+         }
+
+         const displayitems = function() {
+            document.getElementById("itemlist").innerHTML = ""; // Clear the list
+            document.getElementById("itemlist").innerHTML = shoppingcard 
+           
+            };
+
+            
+         
+
+
+
+    </script>
+</body>
+
+</html>
