@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager - DOM Practice</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 2rem;
+        transition: background 0.3s, color 0.3s;
+      }
+
+      body.light {
+        background-color: white;
+        color: black;
+      }
+
+      body.dark {
+        background-color: #222;
+        color: #0000ff;
+      }
+
+      .container {
+        max-width: 500px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 1rem;
+      }
+
+      .task-list {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 2rem;
+      }
+
+      .task {
+        background: #f0f0f0;
+        margin: 0.5rem 0;
+        padding: 0.75rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        transition: opacity 0.3s;
+      }
+
+      .controls button {
+        margin: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      #toggleTheme {
+        background-color: #6c5ce7;
+        color: white;
+      }
+
+      #hideTasks {
+        background-color: #d63031;
+        color: white;
+      }
+
+      #showTasks {
+        background-color: #00b894;
+        color: white;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="light">
+    <button id="toggleTheme">Toggle theme on</button>
+    <button id="hideTasks">Hide All Tasks</button>
+    <button id="showTasks">Show All Tasks</button>
+
+    <div class="task-list">
+      <div class="task">📝 Task 1: Study DOM Events</div>
+      <div class="task">📝 Task 2: Practice QuerySelector</div>
+      <div class="task">📝 Task 3: Master Event Handling</div>
+    </div>
+
+    <script>
+      let isdarkMode = false;
+
+      // Toggle theme via button
+      document
+        .querySelector('#toggleTheme')
+        .addEventListener('click', function () {
+          if (!isdarkMode) {
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
+            this.textContent = 'Toggle back';
+            isdarkMode = true;
+          } else {
+            document.body.classList.remove('dark');
+            document.body.classList.add('light');
+            this.textContent = 'Toggle theme on';
+            isdarkMode = false;
+          }
+        });
+
+      // Hide all tasks
+      document
+        .querySelector('#hideTasks')
+        .addEventListener('click', function () {
+          document.querySelector('.task-list').classList.add('hidden');
+        });
+
+      // Show all tasks
+      document
+        .querySelector('#showTasks')
+        .addEventListener('click', function () {
+          document.querySelector('.task-list').classList.remove('hidden');
+        });
+
+      // Keyboard Shortcuts
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'T' || e.key === 't') {
+          if (!isdarkMode) {
+            document.body.classList.remove('light');
+            document.body.classList.add('dark');
+            document.querySelector('#toggleTheme').textContent = 'Toggle back';
+            isdarkMode = true;
+          } else {
+            document.body.classList.remove('dark');
+            document.body.classList.add('light');
+            document.querySelector('#toggleTheme').textContent =
+              'Toggle theme on';
+            isdarkMode = false;
+          }
+        } else if (e.key === 'H' || e.key === 'h') {
+          document.querySelector('.task-list').classList.add('hidden');
+        } else if (e.key === 'S' || e.key === 's') {
+          document.querySelector('.task-list').classList.remove('hidden');
+        }
+      });
+    </script>
+  </body>
+</html>
