@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopsee</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 20px;
+        background-color: #ffffff;
+      }
+
+      h3 {
+        font-size: 28px;
+        margin-bottom: 20px;
+      }
+
+      .product-section {
+        display: flex;
+        justify-content: space-between;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+
+      .product {
+        flex: 1;
+      }
+
+      .product-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border: 2px solid #cbd5e1;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+      }
+
+      .image {
+        width: 50px;
+        height: 50px;
+        background-color: grey;
+        border-radius: 5px;
+      }
+
+      .product-content h4 {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      .price {
+        margin: 5px 0 0;
+      }
+
+      .counter-box {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-left: 10px;
+        padding: 2px 6px;
+        background-color: #e0e7ff;
+        border: 1px solid #e0e7ff;
+        border-radius: 4px;
+      }
+
+      button {
+        border: none;
+        background-color: #ffffff;
+        padding: 2px 6px;
+        border-radius: 3px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      button:hover {
+        background-color: #f0f0f0;
+      }
+
+      .checkout-section {
+        flex-basis: 300px;
+        background-color: #f9fafb;
+        border: 1px solid #e5e7eb;
+        padding: 20px;
+        border-radius: 8px;
+        height: fit-content;
+      }
+
+      .product-listing {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      .total-amount {
+        font-weight: bold;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="product-section">
+      <!-- Left: Products -->
+      <div class="product">
+        <h3>Products</h3>
+
+        <div class="product-container">
+          <div class="product-image">
+            <div class="image"></div>
+          </div>
+          <div class="product-content">
+            <h4>Product 1</h4>
+            <p class="price">
+              $19.99
+              <span class="counter-box">
+                <span class="counter--0" data-product="1">0</span>
+                <button class="btn-plus" data-product="0">+</button>
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="product-container">
+          <div class="product-image">
+            <div class="image"></div>
+          </div>
+          <div class="product-content">
+            <h4>Product 2</h4>
+            <p class="price">
+              $24.99
+              <span class="counter-box">
+                <span class="counter--1" data-product="2">0</span>
+                <button class="btn-plus" data-product="1">+</button>
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="product-container">
+          <div class="product-image">
+            <div class="image"></div>
+          </div>
+          <div class="product-content">
+            <h4>Product 3</h4>
+            <p class="price">
+              $14.99
+              <span class="counter-box">
+                <span class="counter--2" data-product="3">0</span>
+                <button class="btn-plus" data-product="2">+</button>
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <button id="checkout">Checkout</button>
+      </div>
+
+      <!-- Right: Checkout -->
+      <div class="checkout-section">
+        <h3>Checkout</h3>
+        <div class="product-listing">
+          <!-- Dynamic product summary goes here -->
+        </div>
+        <hr />
+        <p>Total: <span class="total-amount">$0.00</span></p>
+      </div>
+    </section>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
