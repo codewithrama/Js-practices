@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emoji Rating</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background-color: #f8fafc;
+        color: #0f172a;
+        text-align: center;
+        padding: 50px 20px;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+      }
+
+      .emoji-container {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .emoji {
+        font-size: 40px;
+        background-color: white;
+        border: 2px solid #cbd5e1;
+        border-radius: 10px;
+        padding: 15px;
+        cursor: pointer;
+        transition: transform 0.2s, background-color 0.3s;
+      }
+
+      .emoji:hover {
+        transform: scale(1.1);
+        background-color: #e2e8f0;
+      }
+
+      .message {
+        font-size: 18px;
+        color: #475569;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>How was your experience?</h1>
+
+    <div class="emoji-container">
+      <button class="emoji">😡</button>
+      <button class="emoji">😐</button>
+      <button class="emoji">😊</button>
+      <button class="emoji">😍</button>
+    </div>
+
+    <p class="message">Click an emoji to rate</p>
+
+    <script>
+      let selected = document.querySelectorAll(".emoji");
+      console.log(selected);
+      for (let i = 0; i < selected.length; i++) {
+        selected[i].addEventListener("click", function () {
+          if (selected[i].innerText === "😡") {
+            document.querySelector(".message").textContent =
+              "oops! you submitted angry ! wanna help ?";
+            document.body.style.backgroundColor = "black";
+            document.querySelector("body").style.color = "red";
+            document.querySelector(".message").style.color = "red";
+          } else if (selected[i].innerText === "😐") {
+            document.querySelector(".message").textContent =
+              "oh you're sad ! Pls reachout to us ! if anything :)";
+            document.body.style.backgroundColor = "grey";
+            document.querySelector("body").style.color = "white";
+            document.querySelector(".message").style.color = "white";
+          } else if (selected[i].innerText === "😊") {
+            document.querySelector(".message").textContent =
+              "ok ! you Happy thanks honey ";
+            document.body.style.backgroundColor = "yellow";
+          } else if (selected[i].innerText === "😍") {
+            document.querySelector(".message").textContent =
+              "ok ! you Loved our Services thankyou honey !  ";
+            document.body.style.backgroundColor = "red";
+            document.querySelector("body").style.color = "white";
+            document.querySelector(".message").style.color = "white";
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
