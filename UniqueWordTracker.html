@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unique Word Tracker</title>
+    <style>
+      body {
+        background-color: palegreen;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+        margin: 50px;
+      }
+
+      input {
+        padding: 15px;
+        border: 3px solid plum;
+        box-shadow: 2px palegreen;
+        width: 160px;
+      }
+
+      button {
+        cursor: pointer;
+        border: none;
+        padding: 15px;
+        width: 160px;
+        background-color: firebrick;
+        color: white;
+      }
+
+      p {
+        color: black;
+      }
+
+      ::placeholder {
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="list" type="text" placeholder="Enter words  here with space " />
+    <button id="track">Track Unique Word</button>
+    <p id="word"></p>
+    <p id="message"></p>
+
+    <script>
+      const inputBox = document.getElementById("list");
+      const trackButton = document.getElementById("track");
+
+      // Disable the button initially
+      trackButton.disabled = true;
+
+      // Listen to input changes
+      inputBox.addEventListener("input", function () {
+        if (inputBox.value.trim() === "") {
+          trackButton.disabled = true;
+        } else {
+          trackButton.disabled = false;
+        }
+      });
+
+      document.getElementById("track").addEventListener("click", function () {
+        // let arr = [];
+        // let convert = new Set();
+        // let textReciever = "";
+        // let spliting;
+        // textReciever = document.getElementById("list").value;
+        // let lowercase = textReciever.toLowerCase();
+        // spliting = lowercase.split(" ");
+        // for (let [, textset] of spliting.entries()) {
+        //   convert.add(textset);
+        // }
+        // document.getElementById(
+        //   "word"
+        // ).textContent = `Total Words: ${spliting.length}`;
+        // document.getElementById("message").textContent = ` unique words ${
+        //   convert.size
+        // }, ${[...convert]}`;
+
+        let arr = [];
+        let convert = new Set();
+        let textReciever = "";
+        let spliting;
+
+        textReciever = document.getElementById("list").value;
+
+        // ✅ Normalize case and remove extra spaces
+        let lowercase = textReciever.toLowerCase().trim();
+
+        // ✅ Avoid empty string issue and split by one or more spaces
+        spliting = lowercase.split(/\s+/);
+
+        for (let [, textset] of spliting.entries()) {
+          convert.add(textset);
+        }
+
+        document.getElementById(
+          "word"
+        ).textContent = `Total Words: ${spliting.length}`;
+        document.getElementById("message").textContent = `Unique Words: ${
+          convert.size
+        }, ${[...convert].join(", ")}`;
+      });
+    </script>
+  </body>
+</html>
