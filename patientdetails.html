@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patientcard</title>
+  <style>
+    body {
+      color: #000;
+      font-family: Arial, sans-serif;
+    }
+
+    .patient-container {
+      display: flex;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 15px 25px;
+      max-width: 1000px;
+      margin: 20px auto;
+    }
+
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 10%;
+      background-color: #c1d6eb;
+      object-fit: cover;
+      margin: 5px;
+    }
+
+    .patient-details {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px 30px;
+      width: 100%;
+      padding-left: 20px;
+    }
+
+    .patient-details p {
+      margin: 4px 0;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .patient-details span {
+      color: #f97316;
+      /* Orange color for values */
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="patient-container">
+    <div class="profile">
+      <img class="profile" src="./profile-avatar.png" />
+    </div>
+
+    <div class="patient-details">
+      <p>Name : <span class="name"></span></p>
+      <p>Member Id : <span class="patientid"></span></p>
+      <p>Contact : <span class="phonenumber"></span></p>
+      <p>Location : <span class="patient_address"></span></p>
+      <p>Emergency : <span class="emergency"></span></p>
+      <p>Health Coach : <span class="health_coach"></span></p>
+      <p>Gender / Age : <span class="gender_age"></span></p>
+      <p>Height : <span class="height"></span></p>
+      <p>Weight : <span class="weight"></span></p>
+      <p>BMI : <span class="bmi"></span></p>
+      <p>Waist : <span class="waist"></span></p>
+      <p>Alcohol : <span class="alcohol"></span></p>
+      <p>Smoking : <span class="smoking"></span></p>
+      <p>Activity : <span class="activity"></span></p>
+      <p>Medical Condition : <span class="medication_condition"></span></p>
+      <p>DOE : <span class="doe"></span></p>
+      <p>Care Plan : <span class="careplan"></span></p>
+      <p>PCP Name : <span class="pcp_name"></span></p>
+      <p>PCP Goal : <span class="pcp_goal"></span></p>
+      <p>Next PCP Date : <span class="next_pcp_date"></span></p>
+      <p>Treating Doctor : <span class="treating_doctor"></span></p>
+    </div>
+
+    <script>
+      const apiResponse = {
+        patientid: "TH24042148",
+        name: "Sarasu D",
+        dob: "1981-12-06T00:00:00",
+        gender: "Female 43",
+        street_name: null,
+        city: null,
+        country: null,
+        height: 170,
+        height_units_id: 2,
+        weight: 48.3,
+        weight_units_id: 3,
+        diagnosis: null,
+        bmi: 16,
+        waist: 0,
+        waist_units_id: 0,
+        bloodgroup: "O(+)",
+        phonenumber: "+91 7538834395",
+        emergency: null,
+        doe: null,
+        careplan: null,
+        primary_condition: null,
+        height_weight: "170.00 CMS/48.30 Kgs",
+        gender_age: "43 Yrs & Female",
+        medication_condition: null,
+        phase: "Onboarding",
+        smoking: null,
+        alcohol: null,
+        activity: null,
+        language: null,
+        lastupdatedon: "12/03/2021 18:13:36",
+        maritalstatus: "147",
+        emailaddress: null,
+        state: null,
+        pincode: null,
+        doctor_name: null,
+        medication_condition_id: 0,
+        has_precisioncareplan: true,
+        source: null,
+        source_name: null,
+        campaign: null,
+        partner_name: null,
+        careteam: null,
+        allergies: null,
+        patient_address: "Hydrabad",
+        profilePicture: null,
+        profilePictureUrl: null,
+        pcpDetails: [],
+        subscription_status: null,
+        provisional_diagnosis: null,
+        cheif_complaints: null,
+        ckd_tag: null,
+        is_ckd: false,
+        is_ckd_dialysis: false,
+        show_edamam_recipes: false,
+        ejection_fraction: null,
+        show_cardiology_detail: null,
+        care_plan_code: null,
+        health_coach: null,
+        treating_doctor: null,
+      };
+      for (const [names, keys] of Object.entries(apiResponse)) {
+        const element = document.querySelector(`.${names}`);
+        if (element && element !== "pcpDetails") {
+          element.textContent = keys ?? "N/A";
+        }
+        else if (names === "pcpDetails") {
+          document.querySelector('.pcp_name').textContent = 'N/A'
+          document.querySelector('.pcp_goal').textContent = 'N/A'
+          document.querySelector('.next_pcp_date').textContent = 'N/A'
+
+        }
+      }
+
+
+    </script>
+</body>
+
+</html>
